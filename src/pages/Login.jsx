@@ -15,7 +15,7 @@
         </div>
       </form> */
 
-      import React, { useState } from "react";
+      import React, { useEffect, useState } from "react";
 import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import * as api from "../utils/api";
 import { useRecoilState } from "recoil";
@@ -28,9 +28,11 @@ const Login = () => {
   const [err,setErr] = useRecoilState(errorAtom);
   const [user,setUser] = useRecoilState(userAtom);
 
-  if(user.isAuthenticated){
-    navigate('/');
-  }
+  useEffect(() => {
+    if(user.isAuthenticated){
+      navigate('/');
+    }
+  },[user])
 
   async function handleGoogleLoginSuccess(tokenResponse) {
     const accessToken = tokenResponse.access_token;

@@ -18,7 +18,7 @@ const Pricing = () => {
 
   const handleSubmit = async (priceId) => {
 
-    if(!userAtom.isAuthenticated){
+    if(!user.isAuthenticated){
       navigate("/login");
       return false;
     }
