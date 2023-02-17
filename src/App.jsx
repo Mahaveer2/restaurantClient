@@ -37,7 +37,7 @@ function App() {
 
   const [subscription, setSubscription] = useRecoilState(subscriptionState);
 
-  const getCustomer = async () => {
+  const getCustomer = async (email) => {
     let url = `${
       import.meta.env.VITE_SERVER_DOMAIN
     }/orders/get-subscriptions`;
@@ -46,7 +46,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email: user.email }),
+      body: JSON.stringify({ email: email }),
     });
     const data = await response.json();
     if (data.isSubscribed) {
@@ -66,13 +66,13 @@ function App() {
         isAuthenticated: true,
         ...user,
       });
-      getCustomer();
+      getCustomer(user.email);
     }
 
     setTimeout(() => {
       setLoading({ loading: false });
     },1300)
-  }, [subscription]);
+  }, [useRecoilState]);
   return (
     <BrowserRouter>
       {loading.loading && (

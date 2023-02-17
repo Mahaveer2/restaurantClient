@@ -26,12 +26,12 @@ const Checkout = () => {
 
   useEffect(() => {
     handleSubmit();
-  },[])
+  },[user])
 
   const [searchParams, setSearchParams] = useSearchParams();
   return (
     <section className='hero mt-4 flex justify-content-center'>
-      <h1>Horray you haveasdas subscribed to our website!</h1>
+      <h1>Horray you have subscribed to our website!</h1>
       <p>Created your subscriptions securely! </p>
     </section>
   )
