@@ -48,7 +48,7 @@ const Dashboard = () => {
         </div>
       </div>
       <main>
-        <h2>FLEXBOX</h2>
+        <h2>Under Construction...</h2>
       </main>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import * as api from "../utils/api";
 import { useRecoilState } from "recoil";
@@ -27,9 +27,11 @@ const Create = () => {
     }, 2000);
   };
 
-  if (!user.isAuthenticated) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (!user.isAuthenticated) {
+      navigate("/login");
+    }
+  },[useRecoilState])
 
   const [FormState,setFormState] = useState(0);
 
