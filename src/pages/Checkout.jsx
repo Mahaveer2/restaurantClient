@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSearchParams } from "react-router-dom";
+import { useRecoilState } from 'recoil';
 
 const Checkout = () => {  
   const [user,setUser] = useRecoilState(userAtom);
