@@ -2,15 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { errorAtom, messageAtom, subscriptionState, userAtom } from "../state/store";
 import { API } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 const Pricing = () => {
   const [user,setUser] = useRecoilState(userAtom);
   const [products,setProducts] = useState([]);
-
+  const navigate =useNavigate();
+  const [loading,setLoading] = useState(false);
   useEffect(() => {
-    API.get("/orders/products").then(products => setProducts(products.data))
+    API.get("/orders/products").then(products => {
+      setLoading(true);
+      setProducts(products.data)
+      setLoading(false);
+    })
   },[useRecoilState]);
 
   const handleSubmit = async (priceId) => {
+
+    if(!userAtom.isAuthenticated){
+      navigate("/login");
+      return false;
+    }
     const response = await fetch(`${import.meta.env.VITE_SERVER_DOMAIN}/orders/create-order`, {
       method: 'POST',
       headers: {
@@ -28,11 +39,12 @@ const Pricing = () => {
     <div>
       <div className="container-fluid hero">
         <div className="container p-5">
-          <div className="row" >
+          <div className="row" >{loading && "Loading..."}
             {products.map(product => (
               <div key={product._id} className="col-lg-4 col-md-12 mb-4">
               <div className="card card2 h-100">
                 <div className="card-body">
+                  
                   <h5 className="card-title">{product.name}</h5>
                   <small className="text-muted">Small Business</small>
                   <br />
