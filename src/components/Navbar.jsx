@@ -55,6 +55,13 @@ const Navbar = () => {
                 }>Profile</span>
             )}
           </NavLink>
+          <NavLink to="/dashboard">
+            {({ isActive }) => (
+                <span href="/" className={
+                  isActive ? "active" : ""
+                }>Dashboard</span>
+            )}
+          </NavLink>
                 <li><a onClick={() => logout()} href="#" >Logout</a></li>
           </> : <>
           <NavLink to="/login">

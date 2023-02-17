@@ -20,6 +20,8 @@ import Pricing from "./pages/Pricing";
 import Checkout from "./pages/Checkout";
 import { loadStripe } from "@stripe/stripe-js";
 import Create from "./pages/Create";
+import Gallery from "./pages/Gallery";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const [user, setUser] = useRecoilState(userAtom);
@@ -88,7 +90,6 @@ function App() {
       )}
 
       <Navbar />
-
       <main className="app">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -98,6 +99,8 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/create" element={<Create/>} />
+          <Route path="/gallery" element={<Gallery/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
         </Routes>
       </main>
       <footer id="footer" className="footer">

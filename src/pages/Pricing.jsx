@@ -9,12 +9,12 @@ const Pricing = () => {
   const navigate =useNavigate();
   const [loading,setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     API.get("/orders/products").then(products => {
-      setLoading(true);
       setProducts(products.data)
       setLoading(false);
     })
-  },[useRecoilState]);
+  },[]);
 
   const handleSubmit = async (priceId) => {
 
@@ -39,12 +39,12 @@ const Pricing = () => {
     <div>
       <div className="container-fluid hero">
         <div className="container p-5">
-          <div className="row" >{loading && "Loading..."}
+          <div className="row" >
+            {loading ? <p>Loading...</p> : <></>}
             {products.map(product => (
               <div key={product._id} className="col-lg-4 col-md-12 mb-4">
               <div className="card card2 h-100">
-                <div className="card-body">
-                  
+                <div className="card-body">                  
                   <h5 className="card-title">{product.name}</h5>
                   <small className="text-muted">Small Business</small>
                   <br />

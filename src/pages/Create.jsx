@@ -31,6 +31,8 @@ const Create = () => {
     navigate("/");
   }
 
+  const [FormState,setFormState] = useState(0);
+
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
@@ -121,7 +123,7 @@ const Create = () => {
                         onSubmit={(e) => handleSubmit(e)}
                         method="post"
                         role="form"
-                        className="php-email-form"
+                        className="php-email-form contact "
                       >
                         <div className="form-group mt-3">
                           <input
