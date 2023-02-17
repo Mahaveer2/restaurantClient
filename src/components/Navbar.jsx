@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import {userAtom} from "../state/store";
 
@@ -19,10 +19,10 @@ const Navbar = () => {
     <>
     <header id="header" className={`header d-flex align-items-center fixed-top ${nav && "mobile-nav-active"}`}>
     <div className="container-fluid d-flex align-items-center justify-content-between">
-      <a href="index.html" className="logo d-flex align-items-center  me-auto me-lg-0">
+      <Link to="/" className="logo d-flex align-items-center  me-auto me-lg-0">
         <i className="bi bi-camera" />
         <h1>Cousine Roo</h1>
-      </a>
+      </Link>
       <nav id="navbar" className="navbar active">
         <ul>
         <NavLink to="/">
