@@ -173,7 +173,4 @@ height: 100vh;flex: 3;
     transform: translateX(0);
   }
 
-  main{
-    margin-left: -300px;
-  }
 }
