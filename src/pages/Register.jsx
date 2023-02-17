@@ -260,7 +260,7 @@ const Register = () => {
               </div>
 
               <div className="text-center mt-3">
-                <button type="submit">Login</button>
+                <button type="submit">Create account</button>
               </div>
             </form>
           </div>
