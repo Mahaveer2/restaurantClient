@@ -72,7 +72,7 @@ function App() {
     setTimeout(() => {
       setLoading({ loading: false });
     },1300)
-  }, []);
+  }, [subscription]);
   return (
     <BrowserRouter>
       {loading.loading && (

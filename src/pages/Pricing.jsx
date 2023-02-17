@@ -8,7 +8,7 @@ const Pricing = () => {
 
   useEffect(() => {
     API.get("/orders/products").then(products => setProducts(products.data))
-  },[]);
+  },[products]);
 
   const handleSubmit = async (priceId) => {
     const response = await fetch(`${import.meta.env.VITE_SERVER_DOMAIN}/orders/create-order`, {
