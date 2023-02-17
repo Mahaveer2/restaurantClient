@@ -1,0 +1,51 @@
+
+.success,.error{
+  position: absolute;
+  top:0;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  transition: .2s ease;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: red !important;
+  color: #fff !important;
+  padding: 10px 20px ;
+  visibility: hidden;
+
+  animation:pop 0.3s ease-in-out;
+}
+
+.success.active,.error.active{
+  visibility: visible;
+  transform: translate(0); 
+  color: #fff !important;
+}
+
+.error{background-color: red !important;}
+.success{background-color: rgb(0, 201, 134);}
+
+@keyframes pop{
+  0%{
+    transform: translateY(-100px) ;
+  }
+  100%{
+    transform: translateY(0) ;
+  }
+}
+
+
+.login-google{
+  width: 100%;
+}
+
+.card{
+  background: #181818;
+  color: #fff !important;
+  border:2px solid #fff;
+}
+
+.style{
+  background-color: #fff;
+}
