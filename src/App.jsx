@@ -22,6 +22,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import Create from "./pages/Create";
 import Gallery from "./pages/Gallery";
 import Dashboard from "./pages/Dashboard";
+import { useQuery } from "react-query";
+import { getCustomer } from "./utils/auth.js";
 
 function App() {
   const [user, setUser] = useRecoilState(userAtom);
@@ -37,28 +39,9 @@ function App() {
     });
   };
 
-  const [subscription, setSubscription] = useRecoilState(subscriptionState);
+  
 
-  const getCustomer = async (email) => {
-    let url = `${
-      import.meta.env.VITE_SERVER_DOMAIN
-    }/orders/get-subscriptions`;
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email }),
-    });
-    const data = await response.json();
-    if (data.isSubscribed) {
-      setSubscription({
-        subscribed: true,
-        data:data.data[0],
-        package:data.product[0]
-      });
-    }
-  };
+  const {data:subscription ,isLoading } = useQuery("subscription",getCustomer)
 
   useEffect(() => {
     setLoading({ loading: true });
@@ -68,12 +51,10 @@ function App() {
         isAuthenticated: true,
         ...user,
       });
-      getCustomer(user.email);
     }
-
     setTimeout(() => {
       setLoading({ loading: false });
-    },1300)
+    }, 1300);
   }, [useRecoilState]);
   return (
     <BrowserRouter>
@@ -98,9 +79,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/create" element={<Create/>} />
-          <Route path="/gallery" element={<Gallery/>} />
-          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
       <footer id="footer" className="footer">

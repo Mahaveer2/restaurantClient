@@ -3,21 +3,28 @@ import { useRecoilState } from "recoil";
 import { errorAtom, messageAtom, subscriptionState, userAtom } from "../state/store";
 import { API } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { useQuery, useQueryClient } from 'react-query';
+import { getCustomer } from "../utils/auth.js";
+
 const Pricing = () => {
-  const [user,setUser] = useRecoilState(userAtom);
-  const [products,setProducts] = useState([]);
+
   const navigate =useNavigate();
   const [loading,setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    API.get("/orders/products").then(products => {
-      setProducts(products.data)
-      setLoading(false);
-    })
-  },[]);
+  const queryClient = useQueryClient();
+  
+  async function handlePricing(){
+    const res = await API.get("/orders/products");
+    const data = res.data;
+    return data;
+  }
+
+  const {data ,isLoading } = useQuery("pricing",handlePricing)
+  const {data:subscription,status} = useQuery('subscription',getCustomer);
 
   const handleSubmit = async (priceId) => {
-
+    if(subscription.isSubscribed){
+      return false;
+    }
     if(!user.isAuthenticated){
       navigate("/login");
       return false;
@@ -33,18 +40,17 @@ const Pricing = () => {
     window.location.href = data.session.url;
   };
 
-  const [subscription,setSubscription ] = useRecoilState(subscriptionState);
 
   return (
     <div>
       <div className="container-fluid hero">
         <div className="container p-5">
           <div className="row" >
-            {loading ? <p>Loading...</p> : <></>}
-            {products.map(product => (
+            {isLoading && status == "loading" ? <p>Loading...</p> : <></>}
+            {data?.map(product => (
               <div key={product._id} className="col-lg-4 col-md-12 mb-4">
               <div className="card card2 h-100">
-                <div className="card-body">                  
+                <div className="card-body module">                  
                   <h5 className="card-title">{product.name}</h5>
                   <small className="text-muted">Small Business</small>
                   <br />
@@ -53,8 +59,8 @@ const Pricing = () => {
                   <br />
                   <br />
                   <div className="d-grid my-3">
-                    {subscription?.package?.id == product.id  ?  "Subscribed" : <>
-                    {subscription.subscribed ? <>Disabled</> : <button 
+                    {subscription?.product[0]?.id == product.id  ?  <span className="subscribed">Subscribed</span> : <>
+                    {subscription?.isSubscribed ? <>Disabled</> : <button 
                      onClick={() => handleSubmit(product.id)}
                      className="btn btn-outline-success btn-block">
                       Select
