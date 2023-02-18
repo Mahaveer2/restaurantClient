@@ -27,12 +27,6 @@ const Create = () => {
     }, 2000);
   };
 
-  useEffect(() => {
-    if (!user.isAuthenticated) {
-      navigate("/login");
-    }
-  },[useRecoilState])
-
   const [FormState,setFormState] = useState(0);
 
   async function handleSubmit(e) {

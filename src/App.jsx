@@ -6,6 +6,7 @@ import * as api from "./utils/api";
 import Register from "./pages/Register";
 import Loader from "./components/Loader";
 import { useRecoilState } from "recoil";
+import RequireAuth from "./components/RequireAuth";
 import {
   errorAtom,
   loadingAtom,
@@ -79,9 +80,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/create" element={<Create />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/create" element={<RequireAuth Component={Create}/>}/>
         </Routes>
       </main>
       <footer id="footer" className="footer">
