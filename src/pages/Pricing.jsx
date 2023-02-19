@@ -56,7 +56,7 @@ const Pricing = () => {
     <div>
       <div className="container mx-auto mt-[100px]">
       <h1 className="text-center text-2xl font-bold mb-10">Pricing</h1>
-        <div className="flex gap-5 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 p-5 gap-5 w-full">
           {isLoading && status == "loading" ? <p>Loading...</p> : <></>}
           {data?.map((product) => (
             <div key={product._id} className="w-full">

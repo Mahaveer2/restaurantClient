@@ -102,39 +102,32 @@ export default function Hero() {
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             How it works
           </h1>
-          <div className="grid md:grid-cols-3 grid-cols-1 pt-10 gap-5">
-            <div className="bg-gray-100 shadow p-6 rounded-xl ">
+          <div className="grid md:grid-cols-2 grid-cols-1 pt-10 gap-5">
+            <div className=" shadow-md transition hover:shadow-lg p-6 rounded-xl h-[300px] flex gap-10">
               <img
-                className="rounded-xl mb-5"
+                className="rounded-xl mb-5 w-[200px]"
                 src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/4ad318e07ec89c49150d34fd79f39321-1676801872322/DALL%C2%B7E%202023-02-19%2015.17.50%20-%20Create%20a%20stunning%20and%20professional%20top%20view%20image%20of%20the%20dish%20soup%20that%20showcases%20its%20flavors%20and%20ingredients%20in%20a%20visually%20striking%20way_%20fitting%20the%20.png?__cld_token__=exp=1676839414~hmac=ada5c3fdbeb29c9332e24257ac2de0aecd9b66ea08e630dadcdd3bdd8e4d967c"
               />
-              <h1 className="text-2xl tracking-tight text-center">Dark</h1>
+            <div className="mt-10">
+            <h1 className="text-2xl tracking-tight text-center">Dark</h1>
               <p className="mt-2 font-light">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum,
                 nesciunt dolores dicta fugit .
               </p>
             </div>
-            <div className="bg-gray-100 shadow p-6 rounded-xl ">
+            </div>
+            <div className=" shadow-md transition hover:shadow-lg p-6 rounded-xl h-[300px] flex gap-10">
               <img
-                className="rounded-xl mb-5"
-                src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/4ad318e07ec89c49150d34fd79f39321-1676801872322/DALL%C2%B7E%202023-02-19%2015.17.50%20-%20Create%20a%20stunning%20and%20professional%20top%20view%20image%20of%20the%20dish%20soup%20that%20showcases%20its%20flavors%20and%20ingredients%20in%20a%20visually%20striking%20way_%20fitting%20the%20.png?__cld_token__=exp=1676839414~hmac=ada5c3fdbeb29c9332e24257ac2de0aecd9b66ea08e630dadcdd3bdd8e4d967c"
+                className="rounded-xl mb-5 w-[200px]"
+                src="https://media.istockphoto.com/id/177804743/photo/assorted-ice-cream.jpg?s=612x612&w=0&k=20&c=6hVNZlKeaZqAKcFPrTs_x_Yagrrbdv29nMRqeq3pkNc="
               />
-              <h1 className="text-2xl tracking-tight text-center">Colorful</h1>
+            <div className="mt-10">
+            <h1 className="text-2xl tracking-tight text-center">Colorful</h1>
               <p className="mt-2 font-light">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum,
                 nesciunt dolores dicta fugit .
               </p>
             </div>
-            <div className="bg-gray-100 shadow p-6 rounded-xl ">
-              <img
-                className="rounded-xl mb-5"
-                src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/4ad318e07ec89c49150d34fd79f39321-1676801872322/DALL%C2%B7E%202023-02-19%2015.17.50%20-%20Create%20a%20stunning%20and%20professional%20top%20view%20image%20of%20the%20dish%20soup%20that%20showcases%20its%20flavors%20and%20ingredients%20in%20a%20visually%20striking%20way_%20fitting%20the%20.png?__cld_token__=exp=1676839414~hmac=ada5c3fdbeb29c9332e24257ac2de0aecd9b66ea08e630dadcdd3bdd8e4d967c"
-              />
-              <h1 className="text-2xl tracking-tight text-center">Bright</h1>
-              <p className="mt-2 font-light">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum,
-                nesciunt dolores dicta fugit .
-              </p>
             </div>
           </div>
         </div>

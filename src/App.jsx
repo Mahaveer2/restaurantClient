@@ -72,7 +72,7 @@ function App() {
       )}
 
       <Navbar />
-      <main className="app mt-20">
+      <main className="app mt-[15vh]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
