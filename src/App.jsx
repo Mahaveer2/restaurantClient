@@ -72,7 +72,7 @@ function App() {
       )}
 
       <Navbar />
-      <main className="app">
+      <main className="app mt-20">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -85,7 +85,7 @@ function App() {
           <Route path="/create" element={<RequireAuth Component={Create}/>}/>
         </Routes>
       </main>
-      <footer id="footer" className="footer">
+      <footer id="footer" className="bg-gray-200 shadow p-10 flex justify-center items-center mt-10">
         <div className="container">
           <div className="copyright">
             © Copyright{" "}

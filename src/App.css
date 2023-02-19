@@ -41,21 +41,22 @@
 }
 
 .card{
-  background: #161616;
+  background: #eee;
   color: #fff !important;
   padding: 1rem;
   position: relative;
-  background: -webkit-linear-gradient(to right, #FFEDBC, #ED4264);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #FFEDBC, #ED4264); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  padding: 3px;
+  padding: 4px;
+  border-radius: 16px;
+  width: 100% !important;
 }
 
 
 .module {
-  background: #222;
-  color: white;
- 
-  padding: 2rem;
+  background: #fff;
+  color: #000;
+  width: 100% !important;
+ border-radius:16px;
+  padding: 2rem
 }
 
 .style{
@@ -194,5 +195,21 @@ background: linear-gradient(to right, #FFEDBC, #ED4264); /* W3C, IE 10+/ Edge, F
 padding: 10px;
 border-radius: 20px;
 text-indent: 20px;
+width: 100% !important ;
 color: #000;
+}
+
+form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input,select{
+  @apply px-3 py-3 placeholder-slate-500 text-slate-600 relative bg-gray-100 rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full !important;
+}
+
+.btn{
+  @apply rounded-md bg-indigo-600 px-3 py-3 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 !important;
 }

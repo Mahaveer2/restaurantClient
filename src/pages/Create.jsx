@@ -72,18 +72,14 @@ const Create = () => {
           </>
         ) : (
           <>
-            <div className="page-header d-flex align-items-center">
-              <div className="container position-relative">
-                <div className="row d-flex justify-content-center">
-                  <div className="col-lg-4 text-center">
-                    <h2>Create</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="mt-[120px]">
+        <div className="row d-flex justify-content-center">
+          <h2 className="text-3xl font-bold text-center">Create</h2>
+        </div>
+      </div>
             {/* End Page Header */}
 
-            <div className="container">
+            <div className="container mx-auto w-full">
               <div className="row justify-content-center ">
                 {loadData && (
                   <>
@@ -114,14 +110,12 @@ const Create = () => {
                 )}
                 {!loadData && (
                   <>
-                    <div className="col-lg-4">
                       <form
                         onSubmit={(e) => handleSubmit(e)}
                         method="post"
                         role="form"
-                        className="php-email-form contact "
+                        className="mt-8"
                       >
-                        <div className="form-group mt-3">
                           <input
                             type="text"
                             className="form-control"
@@ -130,8 +124,6 @@ const Create = () => {
                             placeholder="Dish Name"
                             required
                           />
-                        </div>
-                        <div className="form-group mt-3">
                           <input
                             type="text"
                             className="form-control"
@@ -140,8 +132,6 @@ const Create = () => {
                             placeholder="Ingredients"
                             required
                           />
-                        </div>
-                        <div className="form-group mt-3">
                           <input
                             type="text"
                             className="form-control"
@@ -150,19 +140,13 @@ const Create = () => {
                             placeholder="Number of Ingredients"
                             required
                           />
-                        </div>
-                        <div className="form-group mt-3">
                           <select className="form-control" name="theme">
                             <option value="Bright">Bright</option>
                             <option value="Dark">Dark</option>
                             <option value="Colorful">Colorful</option>
                           </select>
-                        </div>
-                        <div className="text-center mt-3">
-                          <button type="submit">Create Images</button>
-                        </div>
+                          <button type="submit" className="w-full btn">Create Images</button>
                       </form>
-                    </div>
                   </>
                 )}
                 {/* End Contact Form */}

@@ -123,32 +123,24 @@ const Login = () => {
 
   return (
   <section id="contact" className="contact">
-    <div className="page-header d-flex align-items-center">
-  <div className="container position-relative">
+  <div className="mt-[170px]">
     <div className="row d-flex justify-content-center">
-      <div className="col-lg-4 text-center">
-        <h2>Login</h2>
-      </div>
+        <h2 className="text-3xl font-bold text-center">Login</h2>
     </div>
-  </div>
 </div>{/* End Page Header */}
 
-  <div className="container">
+  <div className="container mx-auto w-full">
     <div className="row justify-content-center ">
-      <div className="col-lg-4">
-      <button onClick={login} className="login-google btn btn-primary"> <i className="bi bi-google"></i> Sign in with google</button>
-        <form onSubmit={e => handleSubmit(e)} method="post" role="form" className="php-email-form">
-        <div className="form-group mt-3">
+      <button  onClick={login}  href="/" class="inline-flex items-center w-full px-5 py-3 mb-3 mr-1 text-base font-semibold text-black  no-underline align-middle bg-blue-100 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto  hover:text-black hover:border-blue-700  focus-within:border-blue-700">
+Login with google
+<img src="https://freesvg.org/img/1534129544.png" className="w-5 ml-5" alt="" />
+</button>
+        <form onSubmit={e => handleSubmit(e)} method="post" role="form" className="w-full mt-5">
             <input type="email" className="form-control" name="email" id="email" placeholder="Email" required />
-          </div> 
-          <div className="form-group mt-3">
             <input type="password" className="form-control" name="password" id="password" placeholder="Password" required />
-          </div>
-          
-          <div className="text-center mt-3"><button type="submit">Login</button></div>
+          <button type="submit" className="w-full btn">Login</button>
         </form>
       </div>{/* End Contact Form */}
-    </div>
   </div>
 </section>
 

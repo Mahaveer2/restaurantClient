@@ -1,98 +1,176 @@
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { useRecoilState } from 'recoil'
-import {userAtom} from "../state/store";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link, NavLink } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { userAtom } from "../state/store";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
+let navigation = [
+  { name: "Home", href: "/" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Register", href: "/register" },
+];
+
+let auth_nav = [
+  { name: "Home", href: "/" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Profile", href: "/profile" },
+];
 
 const Navbar = () => {
-  const [user,setUser] = useRecoilState(userAtom);
-  const [nav,setNav] = useState(false);
+  const [user, setUser] = useRecoilState(userAtom);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (user.isAuthenticated) {
+      navigation = auth_nav;
+    }
+  }, [user]);
   const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-  
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
     setUser({
-      isAuthenticated:false,
-    })
-    window.location.href ="/";
-  }
+      isAuthenticated: false,
+    });
+    window.location.href = "/";
+  };
+
   return (
     <>
-    <header id="header" className={`header d-flex align-items-center fixed-top ${nav && "mobile-nav-active"}`}>
-    <div className="container-fluid d-flex align-items-center justify-content-between">
-      <Link to="/" className="logo d-flex align-items-center  me-auto me-lg-0">
-        <i className="bi bi-camera" />
-        <h1>Cousine Roo</h1>
-      </Link>
-      <nav id="navbar" className="navbar active">
-        <ul>
-        <NavLink to="/">
-            {({ isActive }) => (
-                <span href="/" className={
-                  isActive ? "active" : ""
-                }>Home</span>
+      <div className="px-6 z-[22] w-full absolute top-0 pt-6 lg:px-8">
+        <nav className="flex items-center justify-between" aria-label="Global">
+          <div className="flex lg:flex-1">
+            <a href="#" className="-m-1.5 p-1.5">
+              <span className="sr-only">Cousine Roo</span>
+              <img
+                className="h-8"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt=""
+              />
+            </a>
+          </div>
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <span className="sr-only">Open main menu</span>
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="hidden lg:flex lg:gap-x-12">
+            {navigation.map((item) => (
+              <NavLink
+                key={item.name}
+                to={item.href}
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                {item.name}
+              </NavLink>
+            ))}
+          </div>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            {user.isAuthenticated ? (
+              <a
+                href="#"
+                onClick={() => logout()}
+                className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+              >
+                Logout
+              </a>
+            ) : (
+              <NavLink
+                to="/login"
+                className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+              >
+                Log in
+              </NavLink>
             )}
-          </NavLink>
-          <NavLink to="/gallery">
-            {({ isActive }) => (
-                <span href="/" className={
-                  isActive ? "active" : ""
-                }>Gallery</span>
-            )}
-          </NavLink>
-          <NavLink to="/pricing">
-            {({ isActive }) => (
-                <span href="/" className={
-                  isActive ? "active" : ""
-                }>Pricing</span>
-            )}
-          </NavLink>
-          
-          {user.isAuthenticated ? <>
-            <NavLink to="/profile">
-            {({ isActive }) => (
-                <span href="/" className={
-                  isActive ? "active" : ""
-                }>Profile</span>
-            )}
-          </NavLink>
-          <NavLink to="/dashboard">
-            {({ isActive }) => (
-                <span href="/" className={
-                  isActive ? "active" : ""
-                }>Dashboard</span>
-            )}
-          </NavLink>
-                <li><a onClick={() => logout()} href="#" >Logout</a></li>
-          </> : <>
-          <NavLink to="/login">
-            {({ isActive }) => (
-                <span href="/" className={
-                  isActive ? "active" : ""
-                }>Login</span>
-            )}
-          </NavLink>
-          <NavLink to="/register">
-            {({ isActive }) => (
-                <span href="/" className={
-                  isActive ? "active" : ""
-                }>Register</span>
-            )}
-          </NavLink></>}
-        </ul>
-      </nav>{/* .navbar */}
-      <div className="header-social-links">
-        <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
-        <a href="#" className="facebook"><i className="bi bi-facebook" /></a>
-        <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
-        <a href="#" className="linkedin"><i className="bi bi-linkedin" /></a>
-      </div>
-      <i onClick={() => setNav(nav => nav = !nav)} className="mobile-nav-toggle mobile-nav-show bi bi-list" />
-      <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x" />
-    </div>
-  </header>{/* End Header */}
-  {/* ======= Hero Section ======= */}
-  </>
-  )
-}
+          </div>
+        </nav>
 
-export default Navbar
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <>
+              <Dialog
+                as="div"
+                open={mobileMenuOpen}
+                onClose={setMobileMenuOpen}
+              >
+                <motion.div
+                  className="slide-in-nav"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Dialog.Panel
+                    focus="true"
+                    className="fixed top-0 inset-0 z-[23] overflow-y-auto bg-white px-6 py-6 lg:hidden"
+                  >
+                    <div className="flex items-center justify-between">
+                      <a href="#" className="-m-1.5 p-1.5">
+                        <span className="sr-only">Your Company</span>
+                        <img
+                          className="h-8"
+                          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                          alt=""
+                        />
+                      </a>
+                      <button
+                        type="button"
+                        className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <span className="sr-only">Close menu</span>
+                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                      </button>
+                    </div>
+                    <div className="mt-6 flow-root">
+                      <div className="-my-6 divide-y divide-gray-500/10">
+                        <div className="space-y-2 py-6">
+                          {navigation.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10"
+                            >
+                              {item.name}
+                            </a>
+                          ))}
+                        </div>
+                        <div className="py-6">
+                          {user.isAuthenticated ? (
+                            <NavLink
+                              to="/dashboard"
+                              className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                            >
+                              Dashboard
+                            </NavLink>
+                          ) : (
+                            <NavLink
+                              to="/login"
+                              className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                            >
+                              Log in
+                            </NavLink>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </Dialog.Panel>
+                </motion.div>
+              </Dialog>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+    </>
+  );
+};
+
+export default Navbar;

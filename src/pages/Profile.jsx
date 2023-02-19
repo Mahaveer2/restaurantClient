@@ -10,20 +10,16 @@ const Profile = () => {
     navigate("/");
   }
   return (
-    <div className="hero flex justify-content-center">
-      <h1 className="text-center">Profile</h1><br></br>
-      <div className="container d-flex justify-content-center align-items-center ">
-        <div className="">
-          <div className="user text-center">
+    <div className="flex flex-col mt-[100px] justify-center items-center">
+      <h1 className="text-center text-2xl font-bold">Profile</h1><br></br>
+      <div className="flex justify-center items-center">
+      <div className="flex justify-center flex-col items-center">
             <div className="profile">
               <img
                 src={user.profilePic}
-                className="rounded-circle"
-                width={100}
-                height={100}
+                className="rounded-full w-[100px] h-[100px]"
               />
             </div>
-          </div>
           <div className="mt-5 text-center">
             <h4 className="mb-0">{user.firstName} {user.lastName}</h4>
             <span className="text-muted d-block mb-2">{user.email}</span>
