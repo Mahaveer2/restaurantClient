@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -19,6 +19,7 @@ let auth_nav = [
   { name: "Gallery", href: "/gallery" },
   { name: "Pricing", href: "/pricing" },
   { name: "Profile", href: "/profile" },
+  { name: "Dashboard", href: "/dashboard" },
 ];
 
 const Navbar = () => {
@@ -40,10 +41,14 @@ const Navbar = () => {
     });
     window.location.href = "/";
   };
- 
+
   return (
     <>
-      <div className={`px-6 z-[22] w-full absolute top-0 pt-6 lg:px-8 ${location.pathname != "/" && "border border-b-1  h-[88px]"}`}>
+      <div
+        className={`px-6 z-[22] w-full absolute top-0 pt-6 lg:px-8 ${
+          location.pathname != "/" && "border border-b-1  h-[88px]"
+        }`}
+      >
         <nav className="flex items-center justify-between" aria-label="Global">
           <div className="flex lg:flex-1">
             <NavLink to="/" className="-m-1.5 p-1.5">
@@ -68,9 +73,14 @@ const Navbar = () => {
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
               <NavLink
+                onClick={() => setMobileMenuOpen(false)}
                 key={item.name}
                 to={item.href}
-                className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                className={({ isActive }) =>
+                  isActive
+                    ? "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 "
+                    : "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                }
               >
                 {item.name}
               </NavLink>
@@ -81,14 +91,23 @@ const Navbar = () => {
               <a
                 href="#"
                 onClick={() => logout()}
-                className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                className={({ isActive }) =>
+                  isActive
+                    ? "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 "
+                    : "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                }
               >
                 Logout
               </a>
             ) : (
               <NavLink
                 to="/login"
-                className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                onClick={() => setMobileMenuOpen(false)}
+                className={({ isActive }) =>
+                  isActive
+                    ? "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 "
+                    : "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                }
               >
                 Log in
               </NavLink>
@@ -137,9 +156,14 @@ const Navbar = () => {
                         <div className="space-y-2 py-6">
                           {navigation.map((item) => (
                             <NavLink
+                              onClick={() => setMobileMenuOpen(false)}
                               key={item.name}
                               to={item.href}
-                              className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                              className={({ isActive }) =>
+                                isActive
+                                  ? "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 "
+                                  : "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                              }
                             >
                               {item.name}
                             </NavLink>
@@ -147,16 +171,26 @@ const Navbar = () => {
                         </div>
                         <div className="py-6">
                           {user.isAuthenticated ? (
-                            <NavLink
-                              to="/dashboard"
-                              className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                            <a
+                              href="#"
+                              onClick={() => logout()}
+                              className={({ isActive }) =>
+                                isActive
+                                  ? "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 "
+                                  : "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                              }
                             >
-                              Dashboard
-                            </NavLink>
+                              Logout
+                            </a>
                           ) : (
                             <NavLink
+                              onClick={() => setMobileMenuOpen(false)}
                               to="/login"
-                              className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 hover:bg-indigo-400' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                              className={({ isActive }) =>
+                                isActive
+                                  ? "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 hover:bg-indigo-400"
+                                  : "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                              }
                             >
                               Log in
                             </NavLink>
