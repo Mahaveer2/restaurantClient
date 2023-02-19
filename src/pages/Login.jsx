@@ -130,7 +130,7 @@ const Login = () => {
 </div>{/* End Page Header */}
 
   <div className="container mx-auto w-full">
-    <div className="row justify-content-center ">
+    <div className="row justify-content-center p-3">
       <button  onClick={login}  href="/" class="inline-flex items-center w-full px-5 py-3 mb-3 mr-1 text-base font-semibold text-black  no-underline align-middle bg-blue-100 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto  hover:text-black hover:border-blue-700  focus-within:border-blue-700">
 Login with google
 <img src="https://freesvg.org/img/1534129544.png" className="w-5 ml-5" alt="" />

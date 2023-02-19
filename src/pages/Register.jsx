@@ -191,7 +191,7 @@ const Register = () => {
       {/* End Page Header */}
 
       <div className="container mx-auto w-full">
-        <div className="row justify-content-center ">
+        <div className="row justify-content-center p-3">
           <div className="col-lg-9">
             <button
               onClick={login}

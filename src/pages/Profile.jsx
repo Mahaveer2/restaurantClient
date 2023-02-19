@@ -20,14 +20,10 @@ const Profile = () => {
                 className="rounded-full w-[100px] h-[100px]"
               />
             </div>
-          <div className="mt-5 text-center">
+          <div className="mt-5 text-center flex flex-col">
             <h4 className="mb-0">{user.firstName} {user.lastName}</h4>
             <span className="text-muted d-block mb-2">{user.email}</span>
             <button className="btn btn-primary btn-sm follow">Edit</button>
-            <div className="d-flex justify-content-between align-items-center mt-4 px-4">
-              <div className="stats">
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -46,14 +46,14 @@ const Navbar = () => {
       <div className={`px-6 z-[22] w-full absolute top-0 pt-6 lg:px-8 ${location.pathname != "/" && "border border-b-1  h-[88px]"}`}>
         <nav className="flex items-center justify-between" aria-label="Global">
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
+            <NavLink to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Cousine Roo</span>
               <img
                 className="h-8"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
               />
-            </a>
+            </NavLink>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -81,14 +81,14 @@ const Navbar = () => {
               <a
                 href="#"
                 onClick={() => logout()}
-                className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 hover:bg-indigo-400' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
               >
                 Logout
               </a>
             ) : (
               <NavLink
                 to="/login"
-                className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 hover:bg-indigo-400' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
               >
                 Log in
               </NavLink>
@@ -115,14 +115,14 @@ const Navbar = () => {
                     className="fixed top-0 inset-0 z-[23] overflow-y-auto bg-white px-6 py-6 lg:hidden"
                   >
                     <div className="flex items-center justify-between">
-                      <a href="#" className="-m-1.5 p-1.5">
+                      <NavLink to="/" className="-m-1.5 p-1.5">
                         <span className="sr-only">Your Company</span>
                         <img
                           className="h-8"
                           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                           alt=""
                         />
-                      </a>
+                      </NavLink>
                       <button
                         type="button"
                         className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -139,7 +139,7 @@ const Navbar = () => {
                             <NavLink
                               key={item.name}
                               to={item.href}
-                              className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 hover:bg-indigo-400' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                              className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
                             >
                               {item.name}
                             </NavLink>
@@ -149,7 +149,7 @@ const Navbar = () => {
                           {user.isAuthenticated ? (
                             <NavLink
                               to="/dashboard"
-                              className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 hover:bg-indigo-400' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
+                              className={({ isActive }) => (isActive ? '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 ' : '-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10')}
                             >
                               Dashboard
                             </NavLink>
