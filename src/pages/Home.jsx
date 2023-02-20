@@ -3,6 +3,7 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Features from "../components/Home/Features";
 import { Link } from "react-router-dom";
+import Reviews from "../components/Home/Reviews";
 
 export default function Hero() {
   return (
@@ -97,6 +98,34 @@ export default function Hero() {
         </div>
       </main>
       <Features />
+      <section id="get-started-today" className="relative overflow-hidden bg-transparent  text-black py-32">
+      <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
+        <svg
+          className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
+          viewBox="0 0 1155 678"
+        >
+          <path
+            fill="url(#45de2b6b-92d5-4d68-a6a0-9b9b2abad533)"
+            fillOpacity=".3"
+            d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
+          />
+          <defs>
+            <linearGradient
+              id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533"
+              x1="1155.49"
+              x2="-78.208"
+              y1=".177"
+              y2="474.645"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#9089FC" />
+              <stop offset={1} stopColor="#FF80B5" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+        <img alt="" src="/_next/static/media/background-call-to-action.6a5a5672.jpg" width={2347} height={1244} decoding="async" data-nimg={1} className="absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2" loading="lazy" style={{color: 'transparent'}} /><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative"><div className="mx-auto max-w-lg text-center"><h2 className="font-display text-3xl tracking-tight text-black sm:text-4xl">Get started today</h2><p className="mt-4 text-lg tracking-tight text-black">It’s time to take control of your books. Buy our software so you can feel like you’re doing something productive.</p><a className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white mt-10" href="/register">Get 6 months free</a></div></div></section>
+
       <div className="overflow-hidden bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -105,8 +134,8 @@ export default function Hero() {
           <div className="grid md:grid-cols-2 grid-cols-1 pt-10 gap-5">
             <div className=" shadow-md transition hover:shadow-lg p-6 rounded-xl h-[300px] flex gap-10">
               <img
-                className="rounded-xl mb-5 w-[200px]"
-                src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/4ad318e07ec89c49150d34fd79f39321-1676801872322/DALL%C2%B7E%202023-02-19%2015.17.50%20-%20Create%20a%20stunning%20and%20professional%20top%20view%20image%20of%20the%20dish%20soup%20that%20showcases%20its%20flavors%20and%20ingredients%20in%20a%20visually%20striking%20way_%20fitting%20the%20.png?__cld_token__=exp=1676839414~hmac=ada5c3fdbeb29c9332e24257ac2de0aecd9b66ea08e630dadcdd3bdd8e4d967c"
+                className="rounded-xl mb-5 w-[200px] object-cover"
+                src="https://static.toiimg.com/thumb/53110049.cms?width=1200&height=900 "
               />
             <div className="mt-10">
             <h1 className="text-2xl tracking-tight text-center">Dark</h1>
@@ -115,10 +144,12 @@ export default function Hero() {
                 nesciunt dolores dicta fugit .
               </p>
             </div>
+            
             </div>
+            
             <div className=" shadow-md transition hover:shadow-lg p-6 rounded-xl h-[300px] flex gap-10">
               <img
-                className="rounded-xl mb-5 w-[200px]"
+                className="rounded-xl mb-5 w-[200px] object-cover"
                 src="https://media.istockphoto.com/id/177804743/photo/assorted-ice-cream.jpg?s=612x612&w=0&k=20&c=6hVNZlKeaZqAKcFPrTs_x_Yagrrbdv29nMRqeq3pkNc="
               />
             <div className="mt-10">
@@ -134,18 +165,13 @@ export default function Hero() {
       </div>
       <div className="overflow-hidden bg-white py-2 ">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <iframe
-            className="rounded-xl"
-            width="100%"
-            height="780"
-            src="https://www.youtube.com/embed/f_Pcu6wTzoA"
-            title="Spooder-Man Movie Trailer"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
+        <iframe width="100%" height="780" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        className="rounded-xl"
+        allowfullscreen
+        ></iframe>
         </div>
       </div>
+      <Reviews/>
     </div>
   );
 }
