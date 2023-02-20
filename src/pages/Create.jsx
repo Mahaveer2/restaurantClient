@@ -4,10 +4,10 @@ import * as api from "../utils/api";
 import { useRecoilState } from "recoil";
 import Loader from "../components/Loader";
 import { errorAtom, messageAtom, subscriptionState, userAtom } from "../state/store";
-import { useNavigate } from "react-router-dom";
+import { getCustomer } from "../utils/auth.js";
+import { useQuery } from "react-query";
 
 const Create = () => {
-  const navigate = useNavigate();
   const [msg, setMsg] = useRecoilState(messageAtom);
   const [err, setErr] = useRecoilState(errorAtom);
   const [user, setUser] = useRecoilState(userAtom);
@@ -56,7 +56,7 @@ const Create = () => {
     setloadData(res.data.data);
   }
 
-  const [subscribed] = useRecoilState(subscriptionState);
+  const { data: subscribed, isLoading:subLoad } = useQuery("subscription", getCustomer);
 
   return (
     <>
@@ -79,7 +79,7 @@ const Create = () => {
                 {loadData && (
                   <>
                     <h4 className="font-bold">Description:</h4> <p>{loadData.description}</p>
-                    {subscribed.subscribed ? <button className="btn mt-5">Download</button> : <button className="btn mt-5">Buy</button>}
+                    {subscribed.isSubscribed ? <button className="btn mt-5">Download</button> : <button className="btn mt-5">Buy</button>}
                     
                     <section id="gallery" className="grid grid-cols-2 gap-10">
                           {loadData?.images?.map((e) => (

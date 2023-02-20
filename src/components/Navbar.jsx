@@ -51,13 +51,15 @@ const Navbar = () => {
       >
         <nav className="flex items-center justify-between" aria-label="Global">
           <div className="flex lg:flex-1">
-            <NavLink to="/" className="-m-1.5 p-1.5">
+            <NavLink to="/" >
+              <div className="-m-1.5 p-1.5">
               <span className="sr-only">Cousine Roo</span>
               <img
                 className="h-8"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
               />
+              </div>
             </NavLink>
           </div>
           <div className="flex lg:hidden">
@@ -79,9 +81,9 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-indigo-500 "
-                    : "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
-                }
+                    : "-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"}
               >
+
                 {item.name}
               </NavLink>
             ))}
