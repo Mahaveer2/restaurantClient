@@ -24,9 +24,7 @@ const Pricing = () => {
   }
 
   const { data, isLoading } = useQuery("pricing", handlePricing);
-  const { data: subscription,isLoading:subLoad } = useQuery("subscription2",{
-    refetchOnWindowFocus: false,
-  }, getCustomer);
+  const { data: subscription,isLoading:subLoad } = useQuery("subscription",getCustomer);
 
   const handleSubmit = async (priceId) => {
     if (subscription.isSubscribed) {
